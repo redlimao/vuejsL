@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app-7">
+	<ol>
+		<!-- 创建一个todo-item组件的实例 -->
+		<todo-item v-for="item in groceryList" v-bind:todo="item" v-bind:key="item.id"></todo-item>
+	</ol>	
+</div>
+
+<script type="text/javascript">
+	//组件系统是vue的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。
+	//定义一个新的组件
+	Vue.component("todo-item",{
+		//todo-item组件接受一个prop,类似于自定义属性，属性名为todo
+		props:["todo"],
+		template : "<li>{{todo.text}}</li>"
+	})
+	var app7 = new Vue({
+		el : "#app-7",
+		data : {
+			groceryList :[
+				{id:0,text:"蔬菜"},
+				{id:1,text:"奶酪"},
+				{id:2,text:"炸薯条"}
+			]
+		}
+	})
+</script>
+</bdy>
+</html>
